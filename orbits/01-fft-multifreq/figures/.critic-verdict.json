@@ -1,0 +1,29 @@
+{
+  "verdict": "ACCEPT",
+  "rounds": 1,
+  "invoked_via": "Agent(subagent_type=figure-critic)",
+  "overall_comment": "All three figures are publication-quality: the narrative residual-peeling panel tells the discovery story, results.png shows the fit with residuals and noise validation, and fft_analysis.png documents the frequency-picking method; typography, palette, and layout match the style guide.",
+  "figures": [
+    {
+      "path": "figures/narrative.png",
+      "issues": [
+        {"severity": "MINOR", "issue": "Headline test MSE not annotated in narrative figure itself.", "fix": "Add suptitle / corner annotation 'test MSE = 0.0 (target < 0.005)'."},
+        {"severity": "MINOR", "issue": "Per-panel 'model' label sits close to curve in panels 1-3.", "fix": "Move label to upper-right with small y-offset."}
+      ]
+    },
+    {
+      "path": "figures/results.png",
+      "issues": [
+        {"severity": "MINOR", "issue": "Test MSE shown as '0.000' undersells exact recovery.", "fix": "Display with scientific precision or call out 'exact recovery'."},
+        {"severity": "MINOR", "issue": "Horizontal residual histogram has unusual axis orientation.", "fix": "Transpose to vertical with Gaussian N(0, sigma) overlay."}
+      ]
+    },
+    {
+      "path": "figures/fft_analysis.png",
+      "issues": [
+        {"severity": "MINOR", "issue": "Peak labels ambiguous — adjacent bins near same height.", "fix": "Add vertical reference lines at true frequencies."}
+      ]
+    }
+  ],
+  "resolution_note": "Metric floor reached (MSE = 0, exact symbolic recovery). All issues are MINOR style polish; no MAJOR issues. Skipping round-2 iteration because (a) figure-critic verdict is ACCEPT, (b) orbit-reviewer validated the suspicious-improvement flag as legitimate (noise-free test set + exact generator match), and (c) no further metric improvement is possible."
+}
