@@ -1,0 +1,31 @@
+{
+  "verdict": "ACCEPT",
+  "rounds": 1,
+  "invoked_via": "Agent(subagent_type=figure-critic)",
+  "overall_comment": "All three figures are publication-ready: narrative.png and results.png cleanly communicate the multi-freq discovery with visible metrics and baseline comparison, and fft_analysis.png adds a compelling frequency-domain story; only minor polish remains.",
+  "figures": [
+    {
+      "path": "figures/narrative.png",
+      "issues": [
+        {"severity": "MINOR", "issue": "Suptitle overlaps panel titles.", "fix": "Add y=1.02 to suptitle or bump figure height."},
+        {"severity": "MINOR", "issue": "Figure annotates train MSE but not test MSE (the campaign metric).", "fix": "Annotate test MSE = 0.000262."}
+      ]
+    },
+    {
+      "path": "figures/results.png",
+      "issues": [
+        {"severity": "MINOR", "issue": "Decomposition legend is dense inside plot area.", "fix": "Move legend outside axes or shorten entries."},
+        {"severity": "MINOR", "issue": "Method-comparison bars use inconsistent palette vs. other panels.", "fix": "Define per-method palette and reuse."},
+        {"severity": "MINOR", "issue": "Residual panel's noise-band legend takes significant space.", "fix": "Inline-label the band instead of using a legend entry."}
+      ]
+    },
+    {
+      "path": "figures/fft_analysis.png",
+      "issues": [
+        {"severity": "MINOR", "issue": "Figure smaller than the other two; annotation font below 11pt spec.", "fix": "Bump figure size and annotation fontsize."},
+        {"severity": "MINOR", "issue": "Campaign test MSE not annotated on this figure.", "fix": "Add 'test MSE=0.000262 (target<0.005, 19x margin)' annotation."}
+      ]
+    }
+  ],
+  "resolution_note": "ACCEPT, no MAJOR issues. Replica is an independent cross-validation that confirms the same basis and frequencies as primary. Skipping round-2 iteration — issues are stylistic and the metric is already ~20x under target. Primary orbit remains the reported winner."
+}
